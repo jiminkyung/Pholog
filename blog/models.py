@@ -22,6 +22,7 @@ class Post(models.Model):
     content = models.TextField()
     categories = models.ManyToManyField(Category, blank=True)
     tags = models.ManyToManyField(Tag, blank=True)
+    thumbnail = models.ForeignKey('Image', null=True, blank=True, on_delete=models.SET_NULL)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
