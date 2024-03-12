@@ -14,13 +14,7 @@
       </div>
       <div class="col-md-3">
         <label for="id_categories" class="form-label">카테고리</label>
-        {% comment %} {{ form.categories|add_class:"form-select" }} {% endcomment %}
-        <select name="categories" class="form-select" id="id_categories">
-          <option value="">선택 안함</option>
-          {% for category in form.categories.field.queryset %}
-          <option value="{{ category.id }}">{{ category.name }}</option>
-          {% endfor %}
-        </select>
+        {{ form.categories|add_class:"form-select" }}
       </div>
     </div>
     <div class="mb-3">
