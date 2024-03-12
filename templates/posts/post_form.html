@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2>{{ view.title }}</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row mb-3">
+      <div class="col-md-9">
+        <label for="title" class="form-label">제목</label>
+        {{ form.title|add_class:"form-control" }}
+      </div>
+      <div class="col-md-3">
+        <label for="id_categories" class="form-label">카테고리</label>
+        <select name="categories" class="form-select" id="id_categories">
+          <option value="">---------</option>
+          {% for category in form.categories.field.queryset %}
+          <option value="{{ category.pk }}" {% if form.categories.value==category.pk %}selected{% endif %}>
+            {{ category.name }}
+          </option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="content" class="form-label">내용</label>
+      {{ form.content|add_class:"form-control" }}
+    </div>
+    <div class="mb-3">
+      <label for="tags" class="form-label">태그</label>
+      {{ form.tags|add_class:"form-control" }}
+      <div id="tagsHelp" class="form-text">태그는 '#'으로 구분하여 입력하세요.</div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">이미지</label>
+      {{ image_formset.management_form }}
+      {% for form in image_formset %}
+      <div class="mb-3">
+        <div class="form-check">
+          {{ form.DELETE|add_class:"form-check-input" }}
+          <label class="form-check-label" for="{{ form.DELETE.id_for_label }}">삭제</label>
+        </div>
+        {{ form.image|add_class:"form-control" }}
+        {% if form.instance.image %}
+        <img src="{{ form.instance.image.url }}" width="100" alt="Image">
+        {% endif %}
+      </div>
+      {% if image_formset_errors %}
+      <div class="alert alert-danger">
+        <strong>이미지 폼셋 오류:</strong>
+        {% for error in image_formset_errors %}
+        <p>{{ error }}</p>
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    <button type="submit" class="btn btn-primary">저장</button>
+  </form>
+</div>
+{% endblock %}
