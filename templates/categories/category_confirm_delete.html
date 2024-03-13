@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">"{{ object.name }}"카테고리를 삭제하시겠습니까?</h2>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger me-3">확인</button>
+        <a href="{% url "category_list" %}" class="btn btn-secondary">취소</a>
+    </form>
+</div>
+{% endblock %}

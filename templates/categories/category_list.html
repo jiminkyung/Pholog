@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">카테고리 목록</h2>
+    <a href="{% url "category_create" %}" class="btn btn-primary mb-3">카테고리 생성</a>
+    <div class="list-group">
+        {% for category in categories %}
+        <div class="list-group-item d-flex justify-content-between align-items-center fs-5 fw-semibold">
+            {{ category.name }}
+            <div>
+                <a href="{% url "category_update" category.pk %}" class="btn btn-secondary btn-sm">수정</a>
+                <a href="{% url "category_delete" category.pk %}" class="btn btn-danger btn-sm">삭제</a>
+            </div>
+        </div>
+        {% empty %}
+        <div class="list-group-item">등록된 카테고리가 없습니다.</div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
