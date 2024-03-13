@@ -8,18 +8,18 @@
 - **프로젝트 진행 경험** 
 
 ### 1.2 기능
-- 회원기능
+- **회원기능**
     - 로그인 / 로그아웃
     - 회원가입
-- CRUD
+- **CRUD**
     - 게시글 작성/읽기/수정/삭제
     - 이미지 다중 첨부
-- 카테고리
+- **카테고리**
     - 게시글마다 카테고리 지정 가능
-- 태그
+- **태그**
     - 게시글 작성 시 여러개의 태그 추가 가능
     - 태그별로 게시글 검색 가능
-- 댓글
+- **댓글**
     - 타 게시글에 댓글 작성/수정/삭제
 
 ## 2. 개발 환경 및 배포 URL
@@ -226,7 +226,8 @@ gantt
 
 ### 5.1 와이어프레임
 ![Pholog](https://github.com/jiminkyung/Pholog/assets/128216954/186b9e47-3716-4529-a7b4-5c0c471ff3ea)
-Pigma로 제작하였습니다. 링크 → https://www.figma.com/file/BsKyiIDvmN5hIa36lKpnsu/Pholog?type=design&node-id=3%3A7&mode=design&t=s3XkE9xQVq0STWCz-1
+- Pigma로 제작하였습니다.
+- [링크](https://www.figma.com/file/BsKyiIDvmN5hIa36lKpnsu/Pholog?type=design&node-id=3%3A7&mode=design&t=s3XkE9xQVq0STWCz-1)
 
 ### 5.2 화면 설계
 |이름|이미지|이름|이미지|
