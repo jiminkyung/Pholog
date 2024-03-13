@@ -7,8 +7,8 @@
     max-height: 200px;
     object-fit: cover;
   }
-</style>  
-{% endblock  %}
+</style>
+{% endblock %}
 
 {% block content %}
 <div class="container py-5">
@@ -22,28 +22,29 @@
     <h2>{{ tag.name }} 태그가 포함된 게시글</h2>
     {% endif %}
     {% for post in posts %}
-      {% for image in post.images.all %}
-      <div class="col">
-        <div class="card h-100">
-          {% if image.image %}
-          <img src="{{ image.image.url }}" class="card-img-top" alt="{{ post.title }}">
-          {% else %}
-          <img src="https://cdn.pixabay.com/photo/2015/06/19/21/24/avenue-815297_1280.jpg" class="card-img-top" alt="Default Image">
-          {% endif %}
-          <div class="card-body">
-            <h5 class="card-title">{{ post.title }}</h5>
-            <p class="card-text">{{ post.content|truncatewords:20 }}</p>
+    {% for image in post.images.all %}
+    <div class="col">
+      <div class="card h-100">
+        {% if image.image %}
+        <img src="{{ image.image.url }}" class="card-img-top" alt="{{ post.title }}">
+        {% else %}
+        <img src="https://cdn.pixabay.com/photo/2015/06/19/21/24/avenue-815297_1280.jpg" class="card-img-top"
+          alt="Default Image">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ post.title }}</h5>
+          <p class="card-text">{{ post.content|truncatewords:20 }}</p>
+        </div>
+        <div class="card-footer d-flex justify-content-between align-items-center">
+          <div>
+            <small class="text-muted">작성자: {{ post.author.username }}</small><br>
+            <small class="text-muted">작성일: {{ post.created_at|date:"Y-m-d" }}</small>
           </div>
-          <div class="card-footer d-flex justify-content-between align-items-center">
-            <div>
-              <small class="text-muted">작성자: {{ post.author.username }}</small><br>
-              <small class="text-muted">작성일: {{ post.created_at|date:"Y-m-d" }}</small>
-            </div>
-            <a href="{% url "post_detail" post.pk %}" class="btn btn-dark">자세히 보기</a>
-          </div>
+          <a href="{% url " post_detail" post.pk %}" class="btn btn-dark">자세히 보기</a>
         </div>
       </div>
-      {% endfor %}
+    </div>
+    {% endfor %}
     {% empty %}
     <p>게시글이 없습니다.</p>
     {% endfor %}
