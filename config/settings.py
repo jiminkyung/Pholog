@@ -29,6 +29,8 @@ INSTALLED_APPS = [
     "main",
     "blog",
     "accounts",
+    # lib
+    "widget_tweaks",
 ]
 
 MIDDLEWARE = [
