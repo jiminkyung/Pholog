@@ -7,6 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Post, Comment, Tag, Category
 from .forms import PostForm, ImageFormSet, CommentForm, CategoryForm
 from django.http import HttpResponse
+import logging
 
 
 # 전체 게시글 목록
@@ -109,7 +110,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         else:
             return self.render_to_response(self.get_context_data(form=form))
 
-
+logger = logging.getLogger(__name__)
 # 게시글 수정
 class PostUpdateView(UserPassesTestMixin, LoginRequiredMixin, UpdateView):
     model = Post
@@ -131,19 +132,24 @@ class PostUpdateView(UserPassesTestMixin, LoginRequiredMixin, UpdateView):
         image_formset = context["image_formset"]
         if image_formset.is_valid():
             self.object = form.save()
-            
+            try:
+                image_formset.instance = self.object
+                image_formset.save()
+            except ValueError as e:
+                # 예외 발생 시 로그에 기록, 사용자에게 메시지 전달.
+                logger.error(f"Error saving image formset: {e}")
+                form.add_error(None, "이미지를 저장하는 동안 오류가 발생했습니다.")
+                return self.render_to_response(self.get_context_data(form=form))
+
             # 태그 처리
             tags_str = form.cleaned_data.get("tags", "")
             tags = process_tags(tags_str)
             self.object.tags.set(tags)
 
-            image_formset.instance = self.object
-            image_formset.save()
             return redirect("post_list")
         else:
-            return HttpResponse("오류입니다.")
-            # context["image_formset_errors"] = image_formset.errors  # 이미지 폼셋의 오류 메시지를 컨텍스트에 추가
-            # return self.render_to_response(self.get_context_data(form=form))
+            logger.error(f"ImageFormSet validation failed: {image_formset.errors}")
+            return super().form_invalid(form)
 
     def test_func(self):
         post = self.get_object()
