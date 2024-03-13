@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block head %}
+<style>
+    .card-img-top {
+        max-width: 100%;
+        max-height: 200px;
+        object-fit: cover;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="mb-4">"{{ tag_name }}" 태그가 포함된 게시글</h1>
+    <hr>
+    <h4>({{ posts_counted }}) 개의 게시글이 검색되었습니다.</h4>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mt-4">
+        {% for post in posts %}
+        <div class="col">
+            <div class="card h-100">
+                {% if post.images.all %}
+                {% for image in post.images.all %}
+                <img src="{{ image.image.url }}" class="card-img-top" alt="{{ post.title }}">
+                {% endfor %}
+                {% else %}
+                <img src="https://cdn.pixabay.com/photo/2015/06/19/21/24/avenue-815297_1280.jpg" class="card-img-top" alt="Default Image">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text">{{ post.content|truncatewords:20 }}</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                    <div>
+                        <small class="text-muted">작성자: {{ post.author.username }}</small><br>
+                        <small class="text-muted">작성일: {{ post.created_at|date:"Y-m-d" }}</small>
+                    </div>
+                    <a href="{% url "post_detail" post.pk %}" class="btn btn-dark">자세히 보기</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col">
+            <p>해당 태그를 포함하는 게시글이 없습니다.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
