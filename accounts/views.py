@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView, LogoutView
@@ -12,13 +11,16 @@ signup = CreateView.as_view(
     success_url = "/accounts/login/"
 )
 
+
 login = LoginView.as_view(
     template_name = "accounts/form.html",
 )
 
+
 logout = LogoutView.as_view(
     next_page = "/accounts/login/"
 )
+
 
 @login_required
 def profile(request):
