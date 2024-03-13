@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block head %}
+<style>
+  .card-img-top {
+    max-width: 100%; /* 이미지 너비를 카드 너비에 맞춤 */
+    max-height: 200px; /* 최대 높이 설정 */
+    object-fit: cover; /* 이미지 비율 유지하면서 컨테이너 채움 */
+  }
+</style>  
+{% endblock  %}
+
+{% block content %}
+<div class="container py-5">
+  <h1 class="mb-4">{{ user.username }}님의 게시글 목록</h1>
+  <form class="d-inline-flex" role="search" action="" method="get">
+    <input name="q" class="form-control me-2" type="search" placeholder="키워드를 입력해주세요." aria-label="Search">
+    <button class="btn btn-outline-success py-2 px-4 text-nowrap" type="submit">검색</button>
+  </form>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mt-4">
+    {% if tag %}
+    <h2>{{ tag.name }} 태그가 포함된 게시글</h2>
+    {% endif %}
+    {% for post in posts %}
+      {% for image in post.images.all %}
+      <div class="col">
+        <div class="card h-100">
+          {% if image.image %}
+          <img src="{{ image.image.url }}" class="card-img-top" alt="{{ post.title }}">
+          {% else %}
+          <img src="https://cdn.pixabay.com/photo/2015/06/19/21/24/avenue-815297_1280.jpg" class="card-img-top" alt="Default Image">
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.content|truncatewords:20 }}</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">작성자: {{ post.author.username }}</small><br>
+            <small class="text-muted">작성일: {{ post.created_at|date:"Y-m-d" }}</small><br>
+            <a href="{% url 'post_detail' post.pk %}" class="btn btn-dark mt-2 mb-2">자세히 보기</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    {% empty %}
+    <p>게시글이 없습니다.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
