@@ -190,10 +190,66 @@ gantt
 
 
 ### 5.2 화면 설계
-- 메인화면
-![Pholog (1)](https://github.com/jiminkyung/Pholog/assets/128216954/ab4f4391-e46d-422c-bf85-d69e0abbfcf6)
-
-- 게시글 관련 화면
+<table>
+    <tbody>
+        <tr>
+            <td>메인</td>
+            <td>로그인/회원가입</td>
+        </tr>
+        <tr>
+            <td>
+		<img src="![Pholog (1)](https://github.com/jiminkyung/Pholog/assets/128216954/78c78ba2-14a8-43b3-8f77-f39a537fea01)
+" width="100%">
+            </td>
+            <td>
+                <img src="![회원가입](https://github.com/jiminkyung/Pholog/assets/128216954/dc979bd5-4182-4f61-9b44-5b471464b253)
+" width="100%">
+            </td>
+        </tr>
+        <tr>
+            <td>전체 게시글</td>
+            <td>내 게시글</td>
+        </tr>
+        <tr>
+            <td>
+                <img src="![블로그](https://github.com/jiminkyung/Pholog/assets/128216954/09ac08ae-35be-4913-9f81-2bc069e10a52)
+" width="100%">
+            </td>
+            <td>
+                <img src="![내활동 _ 글 목록](https://github.com/jiminkyung/Pholog/assets/128216954/b002dd2c-c1fe-4b20-9bf1-c32b1c65c734)
+" width="100%">
+            </td>
+        </tr>
+        <tr>
+            <td>게시글 상세</td>
+            <td>게시글 작성</td>
+        </tr>
+        <tr>
+            <td>
+                <img src="![게시글 상세페이지](https://github.com/jiminkyung/Pholog/assets/128216954/0971cfb1-eae6-4040-87b4-c877970c3f19)
+" width="100%">
+            </td>
+            <td>
+                <img src="![내 활동 _ 글 작성](https://github.com/jiminkyung/Pholog/assets/128216954/576afb6b-d557-4021-83b4-9b4f31c66fa5)
+" width="100%">
+            </td>
+        </tr>
+        <tr>
+            <td>태그별 게시글</td>
+            <td>카테고리 관리</td>
+        </tr>
+        <tr>
+            <td>
+	        <img src="![태그별 게시글](https://github.com/jiminkyung/Pholog/assets/128216954/1415818d-9c75-470d-93fb-2be9243bd894)
+" width="100%">
+            </td>
+            <td>
+                <img src="![내 활동 _ 카테고리 관리](https://github.com/jiminkyung/Pholog/assets/128216954/08036611-41f8-427d-9450-4aa09106a861)
+" width="100%">
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 
 
