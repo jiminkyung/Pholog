@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-3">
+    <h1>게시글 삭제 확인</h1>
+    <p>정말로 아래의 게시글을 삭제하시겠습니까?</p>
+
+    <div class="alert alert-danger" role="alert">
+        <strong>제목:</strong> {{ object.title }}<br>
+        <strong>작성자:</strong> {{ object.author }}<br>
+        <strong>작성일:</strong> {{ object.created_at }}<br>
+        <strong>내용 미리보기:</strong> {{ object.content|truncatewords:30 }}
+    </div>
+
+    <form action="" method="post">{% csrf_token %}
+        <a href="{% url 'post_list' %}" class="btn btn-secondary">취소</a>
+        <button type="submit" class="btn btn-danger">삭제 확인</button>
+    </form>
+</div>
+{% endblock %}
