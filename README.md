@@ -186,10 +186,15 @@ gantt
 ## 5. 와이어프레임 / UI / BM
 
 ### 5.1 와이어프레임
-pass
+![Pholog](https://github.com/jiminkyung/Pholog/assets/128216954/186b9e47-3716-4529-a7b4-5c0c471ff3ea)
+
 
 ### 5.2 화면 설계
-pass
+- 메인화면
+![Pholog (1)](https://github.com/jiminkyung/Pholog/assets/128216954/ab4f4391-e46d-422c-bf85-d69e0abbfcf6)
+
+- 게시글 관련 화면
+
 
 
 ## 6. 데이터베이스 모델링 (ERD)
