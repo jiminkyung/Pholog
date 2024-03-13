@@ -3,16 +3,24 @@
 ## 1. 목표와 기능
 
 ### 1.1 목표
-- **Django 학습:** 
-- **사진 문화 확산:**  
-- **커뮤니티 구축:** 
+- **Django 학습:** 실제로 서비스를 만들어보며 Django에 익숙해지기
+- **DB 설계 및 구축 경험:** 데이터베이스 설계(ERD), 모델링
+- **프로젝트 진행 경험** 
 
 ### 1.2 기능
-- 회원
+- 회원기능
+    - 로그인 / 로그아웃
+    - 회원가입
 - CRUD
+    - 게시글 작성/읽기/수정/삭제
+    - 이미지 다중 첨부
 - 카테고리
+    - 게시글마다 카테고리 지정 가능
 - 태그
+    - 게시글 작성 시 여러개의 태그 추가 가능
+    - 태그별로 게시글 검색 가능
 - 댓글
+    - 타 게시글에 댓글 작성/수정/삭제
 
 ## 2. 개발 환경 및 배포 URL
 
@@ -190,68 +198,12 @@ gantt
 
 
 ### 5.2 화면 설계
-<table>
-    <tbody>
-        <tr>
-            <td>메인</td>
-            <td>로그인/회원가입</td>
-        </tr>
-        <tr>
-            <td>
-		<img src="![Pholog (1)](https://github.com/jiminkyung/Pholog/assets/128216954/78c78ba2-14a8-43b3-8f77-f39a537fea01)
-" width="100%">
-            </td>
-            <td>
-                <img src="![회원가입](https://github.com/jiminkyung/Pholog/assets/128216954/dc979bd5-4182-4f61-9b44-5b471464b253)
-" width="100%">
-            </td>
-        </tr>
-        <tr>
-            <td>전체 게시글</td>
-            <td>내 게시글</td>
-        </tr>
-        <tr>
-            <td>
-                <img src="![블로그](https://github.com/jiminkyung/Pholog/assets/128216954/09ac08ae-35be-4913-9f81-2bc069e10a52)
-" width="100%">
-            </td>
-            <td>
-                <img src="![내활동 _ 글 목록](https://github.com/jiminkyung/Pholog/assets/128216954/b002dd2c-c1fe-4b20-9bf1-c32b1c65c734)
-" width="100%">
-            </td>
-        </tr>
-        <tr>
-            <td>게시글 상세</td>
-            <td>게시글 작성</td>
-        </tr>
-        <tr>
-            <td>
-                <img src="![게시글 상세페이지](https://github.com/jiminkyung/Pholog/assets/128216954/0971cfb1-eae6-4040-87b4-c877970c3f19)
-" width="100%">
-            </td>
-            <td>
-                <img src="![내 활동 _ 글 작성](https://github.com/jiminkyung/Pholog/assets/128216954/576afb6b-d557-4021-83b4-9b4f31c66fa5)
-" width="100%">
-            </td>
-        </tr>
-        <tr>
-            <td>태그별 게시글</td>
-            <td>카테고리 관리</td>
-        </tr>
-        <tr>
-            <td>
-	        <img src="![태그별 게시글](https://github.com/jiminkyung/Pholog/assets/128216954/1415818d-9c75-470d-93fb-2be9243bd894)
-" width="100%">
-            </td>
-            <td>
-                <img src="![내 활동 _ 카테고리 관리](https://github.com/jiminkyung/Pholog/assets/128216954/08036611-41f8-427d-9450-4aa09106a861)
-" width="100%">
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-
+|이름|이미지|이름|이미지|
+|---|---|---|---|
+|메인 페이지|![Pholog (1)](https://github.com/jiminkyung/Pholog/assets/128216954/78c78ba2-14a8-43b3-8f77-f39a537fea01)|회원가입/로그인 페이지|![회원가입](https://github.com/jiminkyung/Pholog/assets/128216954/dc979bd5-4182-4f61-9b44-5b471464b253)|
+|전체 게시글|![블로그](https://github.com/jiminkyung/Pholog/assets/128216954/09ac08ae-35be-4913-9f81-2bc069e10a52)|내 게시글|![내활동 _ 글 목록](https://github.com/jiminkyung/Pholog/assets/128216954/b002dd2c-c1fe-4b20-9bf1-c32b1c65c734)|
+|게시글 상세페이지|![게시글 상세페이지](https://github.com/jiminkyung/Pholog/assets/128216954/0971cfb1-eae6-4040-87b4-c877970c3f19)|게시글 작성|![내 활동 _ 글 작성](https://github.com/jiminkyung/Pholog/assets/128216954/576afb6b-d557-4021-83b4-9b4f31c66fa5)|
+|태그별 게시글|![태그별 게시글](https://github.com/jiminkyung/Pholog/assets/128216954/1415818d-9c75-470d-93fb-2be9243bd894)|카테고리 관리|![내 활동 _ 카테고리 관리](https://github.com/jiminkyung/Pholog/assets/128216954/08036611-41f8-427d-9450-4aa09106a861)|
 
 ## 6. 데이터베이스 모델링 (ERD)
 ![ERD_light](https://github.com/jiminkyung/Pholog/assets/128216954/79fde70d-361c-44db-a211-8cda049b83a6)
