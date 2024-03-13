@@ -31,12 +31,17 @@
     - HTML, CSS, JS
     - Python
 - **Web Framework**
-    - Django
+    - Django 5.0.2
 - **서비스 배포**
-    - AWS(미정)
+    - AWS Lightsail
 
 ### 2.2 배포 URL
-- pass
+http://15.164.3.24:8000/
+```
+테스트용 계정
+ID: test
+PW: test1234!
+```
 
 ### 2.3 URL 구조 (모놀리식)
 - **main**
@@ -75,19 +80,45 @@
 
 ## 3. 요구사항 명세와 기능 명세
 ```mermaid
-    sequenceDiagram
-    actor 사용자 as 사용자
-    participant 웹서비스 as 웹 서비스
-    participant API as OpenAI API
-
-    사용자->>웹서비스: Python 코드 입력
-    Note over 사용자,웹서비스: 입력 데이터 확인
-    웹서비스-->>사용자: 입력 데이터 없음 (if applicable)
-    웹서비스->>API: 입력 데이터 전송 (if applicable)
-    API->>웹서비스: 질문에 맞는 답변 생성 후 전달
-    Note over 웹서비스, 사용자: 답변 출력
-    사용자-->>웹서비스: 추가 질문 있음 (if applicable)
-    Note over 사용자, 웹서비스: 과정 반복 (if applicable)
+graph TD
+    A[블로그 서비스] --> B[사용자 인증]
+    A --> C[게시글 관리]
+    A --> D[댓글 관리]
+    
+    B --> B1[회원가입]
+    B --> B2[로그인]
+    B --> B3[로그아웃]
+    
+    C --> C1[게시글 작성]
+    C1 --> C1a{사진 첨부 여부}
+    C1a -->|Yes| C1a1[여러 사진 첨부]
+    C1a -->|No| C1a2[사진 첨부 없음]
+    C --> C2[게시글 조회]
+    C --> C3[게시글 수정]
+    C --> C4[게시글 삭제]
+    C --> C5[카테고리 기능]
+    C --> C6[태그 기능]
+    C2 --> C2a[게시글 목록]
+    C2 --> C2b[게시글 상세]
+    
+    D --> D1[댓글 작성]
+    D --> D2[댓글 수정]
+    D --> D3[댓글 삭제]
+    
+    C3 -.-> E{권한 확인}
+    C4 -.-> E
+    D2 -.-> E
+    D3 -.-> E
+    
+    E -->|소유자| E1[허용]
+    E -->|비소유자| E2[거부]
+    
+    B1 -.-> F[이메일 인증]
+    B2 -.-> G[비밀번호 찾기]
+    
+    style A fill:#f9f,stroke:#333,stroke-width:4px
+    style C1 fill:#bbf,stroke:#f66,stroke-width:2px,stroke-dasharray: 5, 5
+    style D1 fill:#bbf,stroke:#f66,stroke-width:2px,stroke-dasharray: 5, 5
 ```
 
 
