@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="mb-0">댓글 삭제 확인</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <p class="card-text">정말로 댓글을 삭제하시겠습니까?</p>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-danger">삭제</button>
+                            <a href="{% url "post_detail" pk=comment.post.pk %}" class="btn btn-secondary">취소</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
