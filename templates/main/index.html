@@ -1,5 +1,29 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Index 페이지</h1>
+<div class="container py-5">
+    <h1 class="mb-4">Image Gallery</h1>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+        {% for post in posts %}
+            {% for image in post.images.all %}
+                <div class="col">
+                    <div class="card h-100">
+                        {% if image.image %}
+                        <img src="{{ image.image.url }}" class="card-img-top" alt="{{ post.title }}">
+                        {% else %}
+                        <img src='https://cdn.pixabay.com/photo/2015/06/19/21/24/avenue-815297_1280.jpg'>
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ post.title }}</h5>
+                            <p class="card-text">{{ post.content|truncatewords:20 }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Posted on {{ post.created_at|date:"Y-m-d" }}</small>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+</div>
 {% endblock  %}
